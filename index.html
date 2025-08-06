@@ -50,9 +50,10 @@
 
         form.addEventListener('submit', async function (e) {
             e.preventDefault();
-
+            
+            const name = document.querySelector('input[name="name"]').value || "Anonymous";
             const timestamp = new Date().toLocaleString();
-            subjectInput.value = `New Service Request - ${timestamp}`;
+            subjectInput.value = `${name} Service Request - ${timestamp}`;
             form.appendChild(subjectInput);
 
             const formData = new FormData(form);
@@ -93,6 +94,7 @@
 
 </body>
 </html>
+
 
 
 
