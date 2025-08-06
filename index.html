@@ -25,10 +25,30 @@
   <section class="form-section">
     <h2>Request Help</h2>
     <form action="https://formspree.io/f/mrblynpz" method="POST">
-      <textarea name="message" placeholder="Tell us what you need..." required></textarea>
-      <input type="email" name="email" placeholder="Your email (so we can reply)" required/>
-      <button type="submit">Submit Request</button>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your name (so we know who were talking to)" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Your email (so we can reply)" required>
+
+        <label for="message">Request Details</label>
+        <textarea id="message" name="message" rows="5" placeholder="Tell us what you need..." required></textarea>
+
+        <button type="submit">Submit</button>
     </form>
+
+    <script>
+        const form = document.querySelector('form');
+        const subjectInput = document.createElement('input');
+        subjectInput.type = 'hidden';
+        subjectInput.name = '_subject';
+
+        form.addEventListener('submit', () => {
+            const timestamp = new Date().toLocaleString();
+            subjectInput.value = `New Service Request - ${timestamp}`;
+            form.appendChild(subjectInput);
+        });
+    </script>
   </section>
 
   <section class="about">
@@ -49,5 +69,6 @@
 
 </body>
 </html>
+
 
 
